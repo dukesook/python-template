@@ -28,14 +28,6 @@ which python
 # /.../project-root/.venv/bin/python -> active
 ```
 
-### Install Package
-
-Reads the pyproject.toml file
-
-```
-pip install -e .
-```
-
 ## File Structure
 
 The Python Packaging Authority (PyPA) recommends:
@@ -46,15 +38,24 @@ my-project/                  # Repository root (can use hyphens)
 ├── README.md                # Project documentation
 ├── src/                     # Container directory (never has an __init__.py)
 │   └── my_project/          # Importable package (must use underscores)
-│       ├── __init__.py
+│       ├── __init__.py      # Signals this directory is an importable package
+│       ├── __main__.py      # Runs when calling: python -m my_project (for executables)
 │       ├── core.py
 │       └── utils.py
 └── tests/                   # Test suite isolated from source code
     ├── __init__.py
-    └── test_core.py
+    └── test_utils.py
 ```
 
 ## Dependencies
+
+### Install Package
+
+Reads the pyproject.toml file
+
+```
+pip install -e .
+```
 
 ### Run
 
